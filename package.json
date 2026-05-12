@@ -1,0 +1,17 @@
+{
+  "name": "gexacanvas-ai",
+  "version": "1.0.0",
+  "description": "A full-stack AI chat and image-generation app using React, Express, MongoDB, Gemini, and Hugging Face.",
+  "type": "module",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently -n server,client -c blue,green \"npm run server\" \"npm run client\"",
+    "client": "npm run dev --prefix client",
+    "server": "npm run dev --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": ["ai", "chatbot", "image-generation", "gemini", "huggingface", "react", "express", "mongodb"],
+  "license": "MIT"
+}

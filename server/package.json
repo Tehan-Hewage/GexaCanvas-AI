@@ -1,0 +1,26 @@
+{
+  "name": "gexacanvas-ai-server",
+  "version": "1.0.0",
+  "description": "GexaCanvas AI backend server",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.1.0",
+    "@huggingface/inference": "^3.6.1",
+    "@supabase/supabase-js": "^2.43.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
