@@ -11,17 +11,17 @@ A full-stack AI chat and image-generation app using React, Express, Supabase, Ge
 
 ## ✨ Features
 
-- **Supabase Authentication** — Secure signup and login powered by Supabase Auth
-- **Saved Chats** — All conversations persisted in Supabase PostgreSQL
-- **Pinned Chats** — Pin important conversations to the top
-- **Delete Chats** — Remove conversations with confirmation
-- **Gemini AI Replies** — Smart responses powered by Google Gemini (Gemini 2.5 Flash)
-- **Image Generation** — Create images from text prompts using Hugging Face Inference API
-- **Supabase Storage** — Generated images securely stored in Supabase buckets
-- **Markdown Responses** — AI replies rendered with full markdown support
-- **Dark Glassmorphism UI** — Premium "Gexa Aurora" design theme
-- **Toasts & Loading States** — Smooth UX with notifications and indicators
-- **Responsive Design** — Works on mobile, tablet, and desktop
+- **Supabase Authentication** - Secure signup and login powered by Supabase Auth
+- **Saved Chats** - All conversations persisted in Supabase PostgreSQL
+- **Pinned Chats** - Pin important conversations to the top
+- **Delete Chats** - Remove conversations with confirmation
+- **Gemini AI Replies** - Smart responses powered by Google Gemini (Gemini 2.5 Flash)
+- **Image Generation** - Create images from text prompts using Hugging Face Inference API
+- **Supabase Storage** - Generated images securely stored in Supabase buckets
+- **Markdown Responses** - AI replies rendered with full markdown support
+- **Dark Glassmorphism UI** - Premium "Gexa Aurora" design theme
+- **Toasts & Loading States** - Smooth UX with notifications and indicators
+- **Responsive Design** - Works on mobile, tablet, and desktop
 
 ---
 
@@ -129,10 +129,10 @@ npm run dev
 
 ## 🔒 Security Notes
 
-- **Never expose API keys** in the frontend — all AI calls go through the server
-- **Never commit `.env` files** — they are in `.gitignore`
-- **Supabase RLS** — Ensure your Supabase Row Level Security policies are active to secure user data
-- **Service Role Key** — Keep your `SUPABASE_SERVICE_ROLE_KEY` strictly on the backend
+- **Never expose API keys** in the frontend - all AI calls go through the server
+- **Never commit `.env` files** - they are in `.gitignore`
+- **Supabase RLS** - Ensure your Supabase Row Level Security policies are active to secure user data
+- **Service Role Key** - Keep your `SUPABASE_SERVICE_ROLE_KEY` strictly on the backend
 
 ---
 
