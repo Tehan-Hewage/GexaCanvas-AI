@@ -1,6 +1,6 @@
 # GexaCanvas AI
 
-A full-stack AI chat and image-generation app using React, Express, Supabase, Gemini, and Pollinations.ai.
+A full-stack AI chat and image-generation app using React, Express, Supabase, Gemini, and Hugging Face.
 
 **Chat smarter. Create visually.**
 
@@ -16,7 +16,7 @@ A full-stack AI chat and image-generation app using React, Express, Supabase, Ge
 - **Pinned Chats** — Pin important conversations to the top
 - **Delete Chats** — Remove conversations with confirmation
 - **Gemini AI Replies** — Smart responses powered by Google Gemini (Gemini 2.5 Flash)
-- **Free Image Generation** — Create images from text prompts using Pollinations.ai (no API key required)
+- **Image Generation** — Create images from text prompts using Hugging Face Inference API
 - **Supabase Storage** — Generated images securely stored in Supabase buckets
 - **Markdown Responses** — AI replies rendered with full markdown support
 - **Dark Glassmorphism UI** — Premium "Gexa Aurora" design theme
@@ -31,6 +31,7 @@ A full-stack AI chat and image-generation app using React, Express, Supabase, Ge
 - **npm**
 - **Supabase Project** (free tier at supabase.com)
 - **Gemini API key** (from Google AI Studio)
+- **Hugging Face token** (from huggingface.co)
 
 ---
 
@@ -70,6 +71,8 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
 GEMINI_API_KEY=your_gemini_api_key
+HF_TOKEN=your_hugging_face_token
+HF_IMAGE_MODEL=black-forest-labs/FLUX.1-schnell
 SUPABASE_IMAGE_BUCKET=gexacanvas-images
 ```
 
@@ -114,8 +117,13 @@ npm run dev
    GEMINI_API_KEY=your_key_here
    ```
 
-### Pollinations.ai (Image Generation)
-- No API key is required! The backend natively integrates with the Pollinations.ai free API.
+### Hugging Face (Image Generation)
+1. Create a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+2. Add to `server/.env`:
+   ```
+   HF_TOKEN=your_token_here
+   HF_IMAGE_MODEL=black-forest-labs/FLUX.1-schnell
+   ```
 
 ---
 
@@ -149,7 +157,7 @@ gexacanvas-ai/
     │   ├── controllers/  # Route handlers
     │   ├── middleware/    # Auth, errors, rate limiting
     │   ├── routes/       # Express routes
-    │   ├── services/     # Gemini, Pollinations & Supabase Storage
+    │   ├── services/     # Gemini, Hugging Face & Supabase Storage
     │   └── utils/        # Helpers
     └── ...
 ```
@@ -185,6 +193,7 @@ gexacanvas-ai/
 - Ensure `GEMINI_API_KEY` is set correctly
 
 ### Image generation fails
+- Check your `HF_TOKEN` and model availability in `server/.env`
 - Check if your Supabase bucket `gexacanvas-images` exists and has the correct permissions for the server to upload to.
 
 ### CORS issue

@@ -2,7 +2,7 @@ import { supabaseAdmin } from '../config/supabase.js';
 import { ENV } from '../config/env.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import sanitizeTitle from '../utils/sanitizeTitle.js';
-import { generatePollinationsImage } from '../services/pollinationsService.js';
+import { generateHuggingFaceImage } from '../services/huggingFaceService.js';
 import { uploadGeneratedImage } from '../services/storageService.js';
 
 /**
@@ -68,10 +68,10 @@ export const generateImage = asyncHandler(async (req, res) => {
 
   if (userMsgError) throw new Error(userMsgError.message);
 
-  // 3. Generate image using Pollinations (Free, unauthenticated fallback)
+  // 3. Generate image using Hugging Face API
   let imageBuffer, contentType;
   try {
-    const result = await generatePollinationsImage(prompt.trim());
+    const result = await generateHuggingFaceImage(prompt.trim());
     imageBuffer = result.buffer;
     contentType = result.contentType;
   } catch (err) {
@@ -96,8 +96,8 @@ export const generateImage = asyncHandler(async (req, res) => {
       prompt: prompt.trim(),
       image_url: imageUrl,
       image_path: imagePath,
-      model: 'pollinations-flux',
-      provider: 'pollinations'
+      model: ENV.HF_IMAGE_MODEL,
+      provider: 'huggingface'
     })
     .select()
     .single();
@@ -118,8 +118,8 @@ export const generateImage = asyncHandler(async (req, res) => {
       prompt: prompt.trim(),
       metadata: {
         generated_image_id: generatedImage.id,
-        model: 'pollinations-flux',
-        provider: 'pollinations'
+        model: ENV.HF_IMAGE_MODEL,
+        provider: 'huggingface'
       }
     })
     .select()
